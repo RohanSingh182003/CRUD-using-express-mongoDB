@@ -94,6 +94,7 @@ app.put('/api/data/:name',(req,res)=>{
         let result = await Member.find({ name: req.params.name });
     if(result.length > 0){
         let updated_result = await Member.findOneAndUpdate({ name: req.params.name },{age:req.body.age,name:req.body.name,programming_language: req.body.programming_language })
+        updated_result.save()
         res.send(updated_result);
     }
     else{
